@@ -25,6 +25,7 @@ This project configures the SPEEDD multi-node dockerized environment. It's compr
     1. clone https://github.com/speedd-project/kafka-docker.git
     2. cd kafka-docker
     3. docker build -t wurstmeister/kafka-docker --rm=true .
+4. Create the 'projects' folder in your home directory and check out the speedd project's source code into it. Then build the speedd-runtime project (`mvn clean install -DskipTests assembly:assembly` - run it from the speedd-runtime folder)
 
 ## Usage
 Start a SPEEDD cluster for traffic management use case:
