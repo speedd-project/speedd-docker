@@ -1,0 +1,66 @@
+zookeeper:
+  image: wurstmeister/zookeeper
+  ports: 
+    - "49181:2181"
+    - "22"
+
+nimbus:
+  image: wurstmeister/storm-nimbus
+  ports:
+    - "49773:3773"
+    - "49772:3772"
+    - "49627:6627"
+    - "22"
+  links: 
+    - zookeeper:zk
+supervisor:
+  image: wurstmeister/storm-supervisor
+  ports:
+    - "8000"
+    - "22"
+  links: 
+    - nimbus:nimbus
+    - zookeeper:zk
+    - kafka:kafka
+
+storm-ui:
+  image: wurstmeister/storm-ui
+  ports:
+    - "49080:8080"
+    - "22"
+  links: 
+    - nimbus:nimbus
+    - zookeeper:zk
+
+kafka:
+  image: wurstmeister/kafka-docker
+  ports:
+    - "59092:9092"
+  links: 
+    - zookeeper:zk
+  environment:
+    KAFKA_ADVERTISED_HOST_NAME: 192.168.99.100
+  volumes:
+    - //var/run/docker.sock://var/run/docker.sock
+
+ui:
+  build: ui
+  ports:
+   - "22"
+   - "43000:3000"
+  links:
+   - zookeeper:zk
+  volumes:
+   - ~/projects/speedd://opt/src/speedd
+   
+client:
+  build: client
+  ports:
+   - "22"
+  links:
+     - zookeeper:zk
+     - kafka:kafka
+     - nimbus:nimbus
+  volumes:
+    - //var/run/docker.sock://var/run/docker.sock
+    - ~/projects/speedd://opt/src/speedd

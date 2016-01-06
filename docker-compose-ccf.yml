@@ -1,0 +1,3 @@
+ui:
+  environment:
+   APP_DIR: /opt/src/speedd/speedd_ui_bf_new
