@@ -15,6 +15,15 @@ This project configures the SPEEDD multi-node dockerized environment. It's compr
 1. Install docker toolkit:
   * [Windows](https://docs.docker.com/engine/installation/windows/)
   * [Mac OS X](https://docs.docker.com/engine/installation/mac/)
+
+  **Note:** Because of an [issue](https://github.com/docker/docker/issues/18180#issuecomment-162568282) with default docker machine you have to create a new machine with overlay storage driver using the following command:
+  
+  `docker-machine create -d virtualbox --engine-storage-driver overlay overlay`
+  
+  After creating the overlay machine please update the start.sh file under your Docker Toolbox installation folder to have the following line:<br>
+  Instead of: `VM=default`<br>
+  Should be: `VM=overlay` 
+  
 2. Start docker-machine and open the terminal window (e.g. Docker Quickstart Terminal)
 3. Build prerequisite images (this step is required because we use our own forked version of the storm and kafka images)
   3.1 Build storm images
