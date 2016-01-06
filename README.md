@@ -37,9 +37,11 @@ This project configures the SPEEDD multi-node dockerized environment. It's compr
 4. Create the 'projects' folder in your home directory and check out the speedd project's source code into it. Then build the speedd-runtime project (`mvn clean install -DskipTests assembly:assembly` - run it from the speedd-runtime folder)
 
 ## Usage
-Start a SPEEDD cluster for traffic management use case:
-- `docker-compose -f docker-compose-tm.yml up -d`
+Start a SPEEDD cluster for traffic management use case:<br>
+- `docker-compose -f docker-compose-tm.yml up -d`<br>
 
+ **Note:** The client and UI containers will wait for 2 minutes to have the kafka brokers up and topics initialized. Also, it might take a few minutes to storm cluster to fully initialize. Please take this into account before accessing the UI or starting SPEEDD topology.<br>
+ 
 Start a SPEEDD cluster for credit card fraud management use case:
 - `docker-compose -f docker-compose-ccf.yml up -d`
 
