@@ -55,6 +55,8 @@ speedddocker_zookeeper_1    /bin/sh -c /usr/sbin/sshd  ...   Up      0.0.0.0:491
   ```
   2. `ssh root@<docker-machine-ip> -p <client ssh port>` - where the client ssh port in the example above is 32806
 
+**Note:** *The password is initialized to 'speedd'*
+
 Deploy SPEEDD topology (example for the traffic management use case):
   1. Open ssh to the client container
   2. `cd /opt/src/speedd/speedd-runtime/scripts/traffic`
