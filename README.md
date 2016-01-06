@@ -2,11 +2,13 @@
 Dockerized setup of SPEEDD environment
 
 This project configures the SPEEDD multi-node dockerized environment. It's comprised of the following components:
+
+
 1. Zookeeper
 2. Storm cluster:
-  1. Storm nimbus
-  2. Storm supervisor
-  3. Storm UI
+  - Storm nimbus
+  - Storm supervisor
+  - Storm UI
 3. Kafka broker
 4. SPEEDD UI
 5. SPEEDD client
@@ -38,21 +40,21 @@ This project configures the SPEEDD multi-node dockerized environment. It's compr
 
 ## Usage
 Start a SPEEDD cluster for traffic management use case:<br>
-- `docker-compose -f docker-compose-tm.yml up -d`<br>
+- `docker-compose -f docker-compose.yml -f docker-compose-tm.yml up -d`<br>
 
  **Note:** The client and UI containers will wait for 2 minutes to have the kafka brokers up and topics initialized. Also, it might take a few minutes to storm cluster to fully initialize. Please take this into account before accessing the UI or starting SPEEDD topology.<br>
  
 Start a SPEEDD cluster for credit card fraud management use case:
-- `docker-compose -f docker-compose-ccf.yml up -d`
+- `docker-compose -f docker-compose.yml -f docker-compose-ccf.yml up -d`
 
 Destroy the SPEEDD cluster:
-- `docker-compose stop`
+- `docker-compose  -f docker-compose.yml  -f docker-compose-tm.yml stop`
 
 Open SSH to the client:
-  1. `docker-compose -f <docker-compose-tm.yml | docker-compose-ccf.yml> ps` - will print information about the running containers that comprise the cluster.
+  1. `docker-compose  -f docker-compose.yml -f <docker-compose-tm.yml | docker-compose-ccf.yml> ps` - will print information about the running containers that comprise the cluster.
     * Example:
     ```
-    $ docker-compose.exe -f docker-compose-tm.yml ps
+    $ docker-compose.exe  -f docker-compose.yml -f docker-compose-tm.yml ps
 
           Name                         Command               State   Ports
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
