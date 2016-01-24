@@ -51,22 +51,7 @@ Destroy the SPEEDD cluster:
 - `docker-compose  -f docker-compose.yml  -f docker-compose-tm.yml stop`
 
 Open SSH to the client:
-  1. `docker-compose  -f docker-compose.yml -f <docker-compose-tm.yml | docker-compose-ccf.yml> ps` - will print information about the running containers that comprise the cluster.
-    * Example:
-    ```
-    $ docker-compose.exe  -f docker-compose.yml -f docker-compose-tm.yml ps
-
-          Name                         Command               State   Ports
----------------------------------------------------------------------------------------------------------------------------------------------------------------
-speedddocker_client_1       /bin/sh -c /opt/start-clie ...   Up      0.0.0.0:32806->22/tcp
-speedddocker_kafka_1        /bin/sh -c start-kafka.sh        Up      0.0.0.0:59092->9092/tcp
-speedddocker_nimbus_1       /bin/sh -c /usr/bin/start- ...   Up      0.0.0.0:32803->22/tcp, 0.0.0.0:49772->3772/tcp, 0.0.0.0:49773->3773/tcp, 0.0.0.0:49627->6627/tcp
-speedddocker_storm-ui_1     /bin/sh -c /usr/bin/start- ...   Up      0.0.0.0:32808->22/tcp, 0.0.0.0:49080->8080/tcp
-speedddocker_supervisor_1   /bin/sh -c /usr/bin/start- ...   Up      0.0.0.0:32805->22/tcp, 6700/tcp, 6701/tcp, 6702/tcp, 6703/tcp, 0.0.0.0:32804->8000/tcp
-speedddocker_ui_1           /bin/sh -c /opt/start-ui.sh      Up      0.0.0.0:32807->22/tcp, 0.0.0.0:43000->3000/tcp
-speedddocker_zookeeper_1    /bin/sh -c /usr/sbin/sshd  ...   Up      0.0.0.0:49181->2181/tcp, 0.0.0.0:32802->22/tcp, 2888/tcp, 3888/tcp
-  ```
-  2. `ssh root@<docker-machine-ip> -p <client ssh port>` - where the client ssh port in the example above is 32806
+  `ssh root@<docker-machine-ip> -p 49022`
 
 **Note:** *The password is initialized to 'speedd'*
 
