@@ -14,6 +14,6 @@ echo "Sleep 1m till kafka is up and topics initialized"
 
 sleep 1m
 
-node app
+node app --zk zk:2181 --ui 3000
 
 echo "Start completed."

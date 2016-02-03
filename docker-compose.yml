@@ -1,3 +1,12 @@
+gmaster:
+  image: wookietreiber/ganglia
+  ports: 
+    - "49880:80"
+    - "49880:80/udp"
+    - "22"
+  volumes: 
+    - ~/projects/speedd-ganglia-config/gmaster://etc/ganglia
+
 zookeeper:
   image: wurstmeister/zookeeper
   ports: 
@@ -13,6 +22,10 @@ nimbus:
     - "22"
   links: 
     - zookeeper:zk
+    - gmaster:gmaster
+  volumes: 
+    - ~/projects/speedd-ganglia-config/gnode://etc/ganglia
+
 supervisor:
   image: wurstmeister/storm-supervisor
   ports:
@@ -22,6 +35,9 @@ supervisor:
     - nimbus:nimbus
     - zookeeper:zk
     - kafka:kafka
+    - gmaster:gmaster
+  volumes: 
+    - ~/projects/speedd-ganglia-config/gnode://etc/ganglia
 
 storm-ui:
   image: wurstmeister/storm-ui
@@ -31,6 +47,7 @@ storm-ui:
   links: 
     - nimbus:nimbus
     - zookeeper:zk
+    - gmaster:gmaster
 
 kafka:
   image: wurstmeister/kafka-docker
@@ -38,8 +55,6 @@ kafka:
     - "59092:9092"
   links: 
     - zookeeper:zk
-  environment:
-    KAFKA_ADVERTISED_HOST_NAME: 192.168.99.100
   volumes:
     - //var/run/docker.sock://var/run/docker.sock
 
@@ -56,11 +71,12 @@ ui:
 client:
   build: client
   ports:
-   - "22"
+   - "49022:22"
   links:
      - zookeeper:zk
      - kafka:kafka
      - nimbus:nimbus
   volumes:
     - //var/run/docker.sock://var/run/docker.sock
-    - ~/projects/speedd://opt/src/speedd
+    - ~/projects/speedd://opt/speedd
+    - ~/projects/perftools://opt/perftools
