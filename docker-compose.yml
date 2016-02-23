@@ -29,7 +29,7 @@ nimbus:
 supervisor:
   image: wurstmeister/storm-supervisor
   ports:
-    - "8000"
+    - "8000:8000"
     - "22"
   links: 
     - nimbus:nimbus
