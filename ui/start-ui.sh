@@ -1,14 +1,14 @@
 echo "SPEEDD UI - starting"
+
+echo "Starting sshd"
+
+/usr/sbin/sshd
+
 cd $APP_DIR
 
 echo "Installing required node modules"
 
 npm install
-
-
-echo "Starting sshd"
- 
-/usr/sbin/sshd
 
 echo "Sleep 1m till kafka is up and topics initialized"
 
