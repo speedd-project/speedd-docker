@@ -29,11 +29,11 @@ This project configures the SPEEDD multi-node dockerized environment. It's compr
 2. Start docker-machine and open the terminal window (e.g. Docker Quickstart Terminal)
 3. Build prerequisite images (this step is required because we use our own forked version of the storm and kafka images)
   3.1 Build storm images
-    1. clone https://github.com/speedd-project/storm-docker.git
+    1. git clone https://github.com/speedd-project/storm-docker.git
     2. cd storm-docker
     3. ./rebuild.sh
   3.2 Build kafka image
-    1. clone https://github.com/speedd-project/kafka-docker.git
+    1. git clone https://github.com/speedd-project/kafka-docker.git
     2. cd kafka-docker
     3. docker build -t wurstmeister/kafka-docker --rm=true .
 4. Create the 'projects' folder in your home directory and check out the speedd project's source code into it. Then build the speedd-runtime project (`mvn clean install -DskipTests assembly:assembly` - run it from the speedd-runtime folder)
