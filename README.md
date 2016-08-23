@@ -50,8 +50,11 @@ Start a SPEEDD cluster for credit card fraud management use case:
 Destroy the SPEEDD cluster:
 - `docker-compose  -f docker-compose.yml  -f docker-compose-tm.yml stop`
 
-Open SSH to the client:
-  `ssh root@<docker-machine-ip> -p 49022`
+Find docker machine ip
+- `docker-machine ip overlay`
+
+Open SSH to the client:	
+	`ssh root@<docker-machine-ip> -p 49022`
 
 **Note:** *The password is initialized to 'speedd'*
 
