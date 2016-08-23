@@ -51,6 +51,7 @@ Destroy the SPEEDD cluster:
 - `docker-compose  -f docker-compose.yml  -f docker-compose-tm.yml stop`
 
 Find docker machine ip
+- `docker-machine ls` to see the running machine name (should be `overlay`)
 - `docker-machine ip overlay`
 
 Open SSH to the client:	
