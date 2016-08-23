@@ -61,12 +61,12 @@ Open SSH to the client:
 
 Deploy SPEEDD topology (example for the traffic management use case):
   1. Open ssh to the client container
-  2. `cd /opt/src/speedd/speedd-runtime/scripts/traffic`
+  2. `cd /opt/speedd/speedd-runtime/scripts/traffic`
   3. `./start-speedd-runtime-docker`
 
 Stream events into SPEEDD (example for the traffic management use case):
   1. Open ssh to the client container
-  2. `cd /opt/src/speedd/speedd-runtime/scripts/traffic`
+  2. `cd /opt/speedd/speedd-runtime/scripts/traffic`
   3. `playevents-traffic-docker`
 
 Open SPEEDD UI:
